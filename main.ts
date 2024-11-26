@@ -1,15 +1,6 @@
 input.onLogoEvent(TouchButtonEvent.Released, function () {
     basic.showIcon(IconNames.Umbrella)
 })
-input.onButtonPressed(Button.A, function () {
-    basic.showIcon(IconNames.Skull)
-})
-input.onButtonPressed(Button.AB, function () {
-    basic.showIcon(IconNames.Duck)
-})
-input.onButtonPressed(Button.B, function () {
-    basic.showIcon(IconNames.TShirt)
-})
 input.onGesture(Gesture.Shake, function () {
     if (State == 1) {
         motor.MotorRun(motor.Motors.M1, motor.Dir.CCW, Speed - 100)
@@ -26,6 +17,13 @@ let myRiddle = MathRiddle.createMyRiddle()
 basic.showString("Ready")
 basic.forever(function () {
     State = 0
+    if (pins.digitalReadPin(DigitalPin.P5) == 0 && pins.digitalReadPin(DigitalPin.P11) == 0) {
+        basic.showIcon(IconNames.Duck)
+    } else if (pins.digitalReadPin(DigitalPin.P5) == 0 && pins.digitalReadPin(DigitalPin.P11) == 1) {
+        basic.showIcon(IconNames.Skull)
+    } else if (pins.digitalReadPin(DigitalPin.P5) == 1 && pins.digitalReadPin(DigitalPin.P11) == 0) {
+        basic.showIcon(IconNames.TShirt)
+    }
     if (pins.digitalReadPin(DigitalPin.P16) == 1) {
         basic.showIcon(IconNames.No)
     } else {
