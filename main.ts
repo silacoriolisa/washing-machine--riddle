@@ -24,6 +24,7 @@ basic.forever(function () {
     } else if (pins.digitalReadPin(DigitalPin.P5) == 1 && pins.digitalReadPin(DigitalPin.P11) == 0) {
         basic.showIcon(IconNames.TShirt)
     }
+    basic.pause(200)
     if (pins.digitalReadPin(DigitalPin.P16) == 1) {
         basic.showIcon(IconNames.No)
     } else {
